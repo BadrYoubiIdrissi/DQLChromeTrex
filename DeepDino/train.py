@@ -8,5 +8,6 @@ def train(env, number_episodes=1):
         while not done:
             action = 1
             observation, reward, done, info = env.step(action)
-    plt.imshow(observation.T)
-    plt.show()
+    for i in range(len(observation)):
+        plt.imshow(observation[0])
+        plt.show()
