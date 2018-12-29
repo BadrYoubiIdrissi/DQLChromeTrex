@@ -1,4 +1,4 @@
-__author__ = "Shivam Shekhar"
+__author__ = "Game by Shivam Shekhar, adapted by Badr YOUBI IDRISSI"
 
 import os
 import sys
@@ -13,7 +13,7 @@ def load_image(
     colorkey=None,
     ):
 
-    fullname = os.path.join('sprites', name)
+    fullname = os.path.join(os.path.dirname(__file__), 'sprites', name)
     image = pygame.image.load(fullname)
     image = image.convert()
     if colorkey is not None:
@@ -34,7 +34,7 @@ def load_sprite_sheet(
         scaley = -1,
         colorkey = None,
         ):
-    fullname = os.path.join('sprites',sheetname)
+    fullname = os.path.join(os.path.dirname(__file__), 'sprites', sheetname)
     sheet = pygame.image.load(fullname)
     sheet = sheet.convert()
 
