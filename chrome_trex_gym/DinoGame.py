@@ -4,7 +4,7 @@ import os
 import sys
 import pygame
 import random
-from pygame import *
+from pygame import RLEACCEL
 
 def load_image(
     name,
@@ -69,13 +69,12 @@ def load_sprite_sheet(
 def extractDigits(number):
     if number > -1:
         digits = []
-        i = 0
         while(number/10 != 0):
             digits.append(number%10)
             number = int(number/10)
 
         digits.append(number%10)
-        for i in range(len(digits),5):
+        for _ in range(len(digits),5):
             digits.append(0)
         digits.reverse()
         return digits
@@ -267,8 +266,10 @@ high_score = 0
 width, height = 600, 150
 
 class DinoGame:
-    def __init__(self,FPS=60):
+    def __init__(self,FPS=60, headless=False):
         self.FPS = FPS
+        if headless:
+            os.environ["SDL_VIDEODRIVER"] = "dummy"
         pygame.init()
         self.screen = pygame.display.set_mode((width, height))
         self.clock = pygame.time.Clock()
