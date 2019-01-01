@@ -4,11 +4,11 @@ from gym.spaces import Discrete, Box
 import numpy as np
 from skimage.transform import resize
 class ChromeTrexEnv(gym.Env):
-    def __init__(self):
+    def __init__(self, FPS=60, headless=False):
         self.action_space = Discrete(3)
         scr_size = (150,600)
         self.observation_space = Box(low=0, high=255, shape=scr_size, dtype=np.uint8)
-        self.game = DinoGame(FPS=60)
+        self.game = DinoGame(FPS=FPS, headless=headless)
         self.game.step(0)
         self.observation = [self.getTransformedImage() for i in range(4)]
 
