@@ -275,8 +275,10 @@ class DinoGame:
         self.clock = pygame.time.Clock()
         pygame.display.set_caption("T-Rex Rush")
         self.reset()
+        self.high_score = high_score
 
     def reset(self):
+        
         self.gamespeed = 4
         self.gameOver = False
         self.playerDino = Dino(44,47)

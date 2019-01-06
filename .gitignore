@@ -4,3 +4,5 @@ __pycache__
 PipFile.lock
 *.h5
 *.ipynb
+*.h5f
+*.json
