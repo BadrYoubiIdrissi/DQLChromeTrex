@@ -288,12 +288,12 @@ class DinoGame:
         self.counter = 0
 
         self.cacti = pygame.sprite.Group()
-        self.pteras = pygame.sprite.Group()
+        #self.pteras = pygame.sprite.Group()
         self.clouds = pygame.sprite.Group()
         self.last_obstacle = pygame.sprite.Group()
 
         Cactus.containers = self.cacti
-        Ptera.containers = self.pteras
+        #Ptera.containers = self.pteras
         Cloud.containers = self.clouds
 
         temp_images,temp_rect = load_sprite_sheet('numbers.png',12,1,11,int(11*6/5),-1)
@@ -330,10 +330,10 @@ class DinoGame:
             if pygame.sprite.collide_mask(self.playerDino,c):
                 self.playerDino.isDead = True
 
-        for p in self.pteras:
-            p.movement[0] = -1*self.gamespeed
-            if pygame.sprite.collide_mask(self.playerDino,p):
-                self.playerDino.isDead = True
+        # for p in self.pteras:
+        #     p.movement[0] = -1*self.gamespeed
+        #     if pygame.sprite.collide_mask(self.playerDino,p):
+        #         self.playerDino.isDead = True
 
         if len(self.cacti) < 2:
             if len(self.cacti) == 0:
@@ -345,18 +345,18 @@ class DinoGame:
                         self.last_obstacle.empty()
                         self.last_obstacle.add(Cactus(self.gamespeed, 40, 40))
 
-        if len(self.pteras) == 0 and random.randrange(0,200) == 10 and self.counter > 500:
-            for l in self.last_obstacle:
-                if l.rect.right < width*0.8:
-                    self.last_obstacle.empty()
-                    self.last_obstacle.add(Ptera(self.gamespeed, 46, 40))
+        # if len(self.pteras) == 0 and random.randrange(0,200) == 10 and self.counter > 500:
+        #     for l in self.last_obstacle:
+        #         if l.rect.right < width*0.8:
+        #             self.last_obstacle.empty()
+        #             self.last_obstacle.add(Ptera(self.gamespeed, 46, 40))
 
         if len(self.clouds) < 5 and random.randrange(0,300) == 10:
             Cloud(width,random.randrange(height/5,height/2))
 
         self.playerDino.update()
         self.cacti.update()
-        self.pteras.update()
+        #self.pteras.update()
         self.clouds.update()
         self.new_ground.update()
         self.scb.update(self.playerDino.score)
@@ -371,7 +371,7 @@ class DinoGame:
                 self.highsc.draw()
                 self.screen.blit(self.HI_image,self.HI_rect)
             self.cacti.draw(self.screen)
-            self.pteras.draw(self.screen)
+            #self.pteras.draw(self.screen)
             self.playerDino.draw()
 
             pygame.display.update()
