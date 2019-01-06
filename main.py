@@ -1,8 +1,8 @@
 import argparse
 import gym
 import chrome_trex_gym
-from .DeepDino.train import train
-from .DeepDino.test import test
+from DeepDino.train import train
+from DeepDino.test import test
 
 def main(args):
     try:
@@ -14,7 +14,7 @@ def main(args):
                 env = gym.make("chrome-trex-train-render-v0")
             else:
                 env = gym.make("chrome-trex-train-v0")
-            train(env, args.job_dir)
+            train(env)
 
     finally:
         env.game.close()
@@ -24,7 +24,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Using deep reinforcement learning to train an agent on chrome dino")
     parser.add_argument('--test')
     parser.add_argument('--render', action="store_true")
-    parser.add_argument('--job-dir', help='Path to the root directory',required=True)
 
     args = parser.parse_args()
 

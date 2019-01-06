@@ -25,7 +25,7 @@ the model.
 
 def get_models():
 
-    observation_input = Input(shape=(84,84,4), name="4_stacked_states")
+    observation_input = Input(shape=(100,100,4), name="4_stacked_states")
     y = Conv2D(16, (8,8), strides=(4,4), activation="relu")(observation_input)
     y = Conv2D(32, (8,8), strides=(2,2), activation="relu")(y)
     y = Flatten()(y)

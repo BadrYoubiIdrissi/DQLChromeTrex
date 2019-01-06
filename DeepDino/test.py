@@ -3,6 +3,7 @@ import numpy as np
 
 def test(modelpath,env):
     model = load_model(modelpath)
+    model.summary()
     obs, _, done, _ = env.step(0)
     while not done:
         Q = model.predict(obs[np.newaxis,:,:,:])
