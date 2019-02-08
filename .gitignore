@@ -1,8 +1,10 @@
 __pycache__
 .vscode
+.ipynb_checkpoints
 *.pyc
 PipFile.lock
 *.h5
+!good_model.h5
 *.ipynb
 *.h5f
 *.json
