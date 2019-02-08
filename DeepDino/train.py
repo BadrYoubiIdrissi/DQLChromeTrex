@@ -91,5 +91,5 @@ def train(env):
 
         print("Episode number {} : epsilon {} score {} highscore {}".format(i, epsilon, score, high_score))
 
-        if (i+1) % 5 == 0:
+        if (i+1) % 10 == 0:
             model.save("models/model_episode_{}.h5".format(i+1))
